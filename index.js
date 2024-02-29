@@ -17,11 +17,16 @@ const removeBook = (name) => {
   return _.remove(books, (book) => {return book.name === name})
 };
 const averagePagesReport = () => {
-  return Math.ceil(books.reduce((acc, book, index) => acc += book.pages / books.length, 0))
+  return Math.ceil(books.reduce((acc, book) => acc += book.pages / books.length, 0))
 }
 const genreReport = () => {
   const genres = books.map((book) => book.genre);
   return _.countBy(genres);
+}
+
+const sortBook = () => {
+  const sorted = books.sort((book1, book2) => book2.year - book1.year)
+  return sorted
 }
 
 addBook("Хоббит", "Дж. Р. Р. Толкиен", 1937, "Фэнтези", 310); 
@@ -36,6 +41,8 @@ console.log(' Генерация отчета по количеству книг
 console.log(genreReport());
 console.log('Генерация отчета по среднему количеству страниц');
 console.log(`Среднее количество страниц: ${averagePagesReport()}`);
+console.log('Сортировка')
+console.log(sortBook())
 removeBook("1984");
 console.log(books)
 
