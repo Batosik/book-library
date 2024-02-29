@@ -17,7 +17,7 @@ const removeBook = (name) => {
   return _.remove(books, (book) => {return book.name === name})
 };
 const averagePagesReport = () => {
-  return Math.ceil(books.reduce((acc, book, index) => acc = book.pages / (index + 1), 0))
+  return Math.ceil(books.reduce((acc, book, index) => acc += book.pages / books.length, 0))
 }
 const genreReport = () => {
   const genres = books.map((book) => book.genre);
